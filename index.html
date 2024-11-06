@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/heroicons@1.0.1"></script>
+    <title>Daftar Ruangan</title>
+</head>
+
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-100">Sistem Reservasi Ruangan</h1>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-4">
+
+        <!-- Daftar Ruangan -->
+        <div class="mb-6">
+            <h2 class="text-2xl font-semibold mb-2 text-blue-300">Daftar Ruangan</h2>
+            <table class="min-w-full bg-gray-800 rounded-lg shadow-md">
+                <thead>
+                    <tr>
+                        <th class="py-3 px-4 border-b border-gray-600 text-left">Nomor Ruangan</th>
+                        <th class="py-3 px-4 border-b border-gray-600 text-left">Kapasitas</th>
+                        <th class="py-3 px-4 border-b border-gray-600 text-left">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="roomList"></tbody>
+            </table>
+        </div>
+
+        <button onclick="openModal()" class="bg-blue-500 p-2 rounded hover:bg-blue-600 transition mt-4">Reservasi
+            Ruangan</button>
+
+        <!-- Daftar Reservasi -->
+        <div class="mt-8">
+            <h2 class="text-2xl font-semibold mb-2 text-blue-300">Daftar Reservasi</h2>
+            <ul id="reservationList" class="bg-gray-800 p-4 rounded-lg shadow-md"></ul>
+        </div>
+    </div>
+
+    <!-- Modal Reservasi -->
+    <div id="reservationModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-300">Formulir Reservasi</h2>
+            <form id="reservationForm">
+                <input type="text" id="name" placeholder="Nama Pemesan"
+                    class="mb-2 p-2 w-full bg-gray-700 text-gray-200 rounded" required>
+                <select id="roomNumber" class="mb-2 p-2 w-full bg-gray-700 text-gray-200 rounded" required>
+                    <option value="" disabled selected>Pilih Nomor Ruangan</option>
+                </select>
+                <input type="date" id="reservationDate" class="mb-2 p-2 w-full bg-gray-700 text-gray-200 rounded"
+                    required>
+                <input type="time" id="startTime" class="mb-2 p-2 w-full bg-gray-700 text-gray-200 rounded" required>
+                <input type="number" id="duration" placeholder="Durasi (jam)"
+                    class="mb-2 p-2 w-full bg-gray-700 text-gray-200 rounded" required>
+                <button type="submit" class="bg-blue-500 p-2 rounded hover:bg-blue-600 transition w-full">Pesan
+                    Ruangan</button>
+            </form>
+            <button onclick="closeModal()"
+                class="bg-red-500 p-2 rounded hover:bg-red-600 transition w-full mt-4">Tutup</button>
+        </div>
+    </div>
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
